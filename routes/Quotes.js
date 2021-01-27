@@ -1,52 +1,22 @@
 const express = require('express')
 const router = express.Router()
 const Quote = require('../models/Quotes')
+const QuotesController = require('../controller/Quotes')
 
 //Get all routes
-router.get('/', async (req, res) => {
-    const quotes = await Quote.find()
-
-    res.json(quotes)
-})
+router.get('/', QuotesController.getQuotes)
 
 //Create new quote
-router.post('/new', async (req, res) => {
-
-    const {content, author} = req.body
-    //console.log("REQ_BODY", req.body)
-
-    const newQuote = new Quote({
-        content: content,
-        author: author
-    })
-
-    const saveQuote = await newQuote.save()
-
-    res.json(saveQuote)
-})
+router.post('/new', QuotesController.createQuote)
 
 //Get specific quote
-router.get('/get/:id', async (req, res) => {
-
-    const quote = await Quote.findById({_id: req.params.id})
-
-    res.json(quote)
-})
+router.get('/get/:id', QuotesController.getSpecificQuote)
 
 //Delete a quote
-router.delete('/delete/:id', async (req, res) => {
-
-    const result = await Quote.findByIdAndDelete({_id: req.params.id})
-
-    res.json(result)
-})
+router.delete('/delete/:id', QuotesController.deleteQuote)
 
 //Update a quote
-router.patch('/update/:id', async (req, res) => {
-    const quote = await Quote.updateOne({_id: req.params.id}, {$set: req.body})
-
-    res.json(quote)
-})
+router.patch('/update/:id', QuotesController.deleteQuote)
 
 //Get random quote
 router.get('/random', async (req, res) => {
