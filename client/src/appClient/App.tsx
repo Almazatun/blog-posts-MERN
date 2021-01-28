@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.scss';
+import {Content} from "../components/layout/content/Content";
 
-function App() {
-  return (
-    <div className="App">
-     <span>Quotes</span>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                    <Content />
+            </div>
+        );
+    }
 }
 
 export default App;
