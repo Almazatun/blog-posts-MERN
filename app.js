@@ -6,6 +6,7 @@ const cors = require('cors');
 
 //import files
 const Quotes = require('./routes/Quotes')
+const UserAuth = require('./routes/User')
 
 //Create express app
 const app = express()
@@ -33,13 +34,9 @@ db.once('open', () => {
 app.use(bodyParser.json())
 app.use(cors())
 
-//Routes
-app.get('/', ((req, res) => {
-    res.send('Hello 🧒')
-}))
-
-//Middleware
+//Routes || Middleware
 app.use('/quotes', Quotes)
+app.use('/users', UserAuth)
 
 //Port
 const PORT = process.env.PORT || 3010;
