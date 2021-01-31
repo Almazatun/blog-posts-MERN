@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 //import files
-const Quotes = require('./routes/Quotes')
+const Posts = require('./routes/Posts')
 const UserAuth = require('./routes/User')
 
 //Create express app
@@ -35,7 +35,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 //Routes || Middleware
-app.use('/quotes', Quotes)
+app.use('/posts', Posts)
 app.use('/users', UserAuth)
 
 //Port
