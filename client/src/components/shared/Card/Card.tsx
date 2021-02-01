@@ -3,8 +3,8 @@ import {RequestStatus} from "../../../reducer";
 import style from './Card.module.scss'
 
 interface CardProps {
-    content: string,
-    author: string,
+    body: string,
+    userName: string,
     requestStatus: RequestStatus
     openModal: () => void
 }
@@ -31,10 +31,10 @@ export class Card extends React.Component<CardProps, CardState> {
             </div>
         ) : (
             <div className={style.card_content_back}>
-                <span>{this.props.content}</span>
+                <span>{this.props.body}</span>
             </div>
         ) ;
-        const titleCardBottomBtn = this.state.show ? `Look at ${this.props.author} Quote` : 'Back'
+        const titleCardBottomBtn = this.state.show ? `Look at ${this.props.userName} Quote` : 'Back'
 
         return (
             <div className={style.card_box}>

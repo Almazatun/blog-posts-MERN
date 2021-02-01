@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import style from './Background.module.scss'
 
 interface BackgroundProps {
-    show: any
-    clicked: any
+    show: boolean
+    clicked: () => void
 }
 
 export class Background extends Component <BackgroundProps, {}>  {

@@ -1,20 +1,20 @@
 import React, {Component, Fragment} from 'react'
 import {Card} from '../shared/Card/Card';
-import {Quote} from './reducer';
+import {Post} from './reducer';
 import {ModalCard} from "../shared/ModalCard/ModalCard";
 import {EditForm} from "../shared/EditForm/EditForm";
 
-interface QuotesProps {
-    quotes: Array<Quote>
+interface PostsProps {
+    posts: Array<Post>
 }
 
-interface QuotesState {
+interface PostsState {
     title: string,
     showModal: boolean
 }
 
-export class Quotes extends Component<QuotesProps, QuotesState> {
-    constructor(props: QuotesProps) {
+export class Posts extends Component<PostsProps, PostsState> {
+    constructor(props: PostsProps) {
         super(props);
 
         this.state = {
@@ -42,12 +42,12 @@ export class Quotes extends Component<QuotesProps, QuotesState> {
     }
 
     render() {
-        const quotesTSX = this.props.quotes.map(quote => {
+        const quotesTSX = this.props.posts.map(post => {
             return (
-                <Fragment key={quote._id}>
-                    <Card author={quote.author}
-                          content={quote.content}
-                          requestStatus={quote.reqStatus}
+                <Fragment key={post._id}>
+                    <Card userName={post.userName}
+                          body={post.body}
+                          requestStatus={post.reqStatus}
                           openModal={this.handleModal}/>
                 </Fragment>
             )
