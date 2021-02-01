@@ -82,7 +82,6 @@ class UserController {
 
                 res.json({
                     ...user._doc,
-                    id: user._id,
                     token
                 })
             }
