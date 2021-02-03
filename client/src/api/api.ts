@@ -4,19 +4,24 @@ import {instance} from "../confirm/apiData";
 //API
 export const API = {
     getAllPosts() {
-        return instance.get<Array<PostServe>>('').then(res => {
+        return instance.get<Array<PostServe>>('posts/').then(res => {
             return res.data
         })
     },
     createPost(data: PostServe) {
-        return instance.post<PostServe>('new/', data).then(res => res.data)
+        return instance.post<PostServe>('posts/new/', data).then(res => res.data)
     },
     deletePost(postId: string) {
-        return instance.delete<PostServe>(`delete/${postId}`).then(res => res.data)
+        return instance.delete<PostServe>(`posts/delete/${postId}`).then(res => res.data)
     },
     updatePost(postId: string, title: string,) {
         const data: { content: string } = {content: title}
-        return instance.patch<PostServe>(`update/${postId}`, data)
+        return instance.patch<PostServe>(`posts/update/${postId}`, data)
+    },
+    logIn(data: LogInArguments){
+        return instance.post<IUserServe>(`users/signIn/`, data).then(res => {
+            return res.data
+        })
     }
 }
 
@@ -28,4 +33,19 @@ export interface PostServe {
     createdAt: string,
     user: string,
     __v?: number
+}
+
+export interface LogInArguments {
+    userName: string,
+    password: string
+}
+
+export interface IUserServe {
+    _id: string
+    userName: string
+    email: string
+    password: string
+    createdAt: string
+    __v: number,
+    token: string
 }
