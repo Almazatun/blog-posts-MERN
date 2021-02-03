@@ -1,0 +1,39 @@
+
+$borderRadius: 8px;
+$fontSize: 36px;
+$cursor: pointer;
+
+.navbar {
+  width: 80%;
+  margin: 0 auto;
+  .left_logo {
+    margin-right: auto;
+    font-size: $fontSize;
+    background: cornsilk;
+    border-radius: $borderRadius;
+    cursor: $cursor;
+  }
+  .right_post, .right_user_profile, .right_user_logIn, .right_user_logIn {
+    margin: 0 10px;
+    background: #017afe;
+    padding: 4px;
+    border-radius: $borderRadius;
+    cursor: $cursor;
+    &:hover {
+      background: #ec5fc5;
+    }
+  }
+  .right_post, .right_user_profile, .right_user_logIn, .right_user_logIn, .left_logo {
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
