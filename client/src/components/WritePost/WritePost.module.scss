@@ -1,4 +1,12 @@
+@import '../LogIn/LogIn.module';
+
 $borderRadius: 8px;
+
+.write_post_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .write_post_container {
   box-sizing: border-box;
@@ -6,4 +14,36 @@ $borderRadius: 8px;
   width: 600px;
   background: #ffffff;
   border-radius: $borderRadius;
+  padding: 1rem;
+  @include BoxShadow();
+  ////////////
+  .post_box {
+    .new_post_title {
+      input {
+        height: 35px;
+        width: 100%;
+        font-size: 32px;
+        font-weight: bold;
+        outline: none;
+        border: 0 solid;
+      }
+      margin: 0 0 10px 0;
+    }
+    .new_post_body {
+      textarea {
+        height: 150px;
+        width: 100%;
+        font-size: 16px;
+        resize: none;
+      }
+    }
+  }
+
+  ////////////
+  .btns {
+    button {
+     @include Button();
+    }
+  }
+
 }

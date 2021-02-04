@@ -9,7 +9,23 @@ export class WritePost extends Component<{}, {}> {
     render() {
         return (
             <div className={style.write_post_container}>
-                <span>Lets write post</span>
+                <div className={style.post_box}>
+                    <div className={style.new_post_title}>
+                        <input type="text"
+                                placeholder={'👉 New post title'}
+                        />
+                    </div>
+                    <div className={style.new_post_body}>
+                    <textarea name="" id="">
+
+                    </textarea>
+                    </div>
+                </div>
+                <div className={style.btns}>
+                    <button>
+                        Publish
+                    </button>
+                </div>
             </div>
         )
     }
