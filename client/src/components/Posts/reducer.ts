@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {API, PostServe} from "../../api/api";
+import {API, ServerPost} from "../../api/api";
 import {AppDispatchType, AppRootStateType, RequestStatus} from "../../reducer";
 
 //AsyncThunks
 export const fetchPostsTC = createAsyncThunk<
-    { posts: Array<PostServe> }, //Return type from createAsyncThunk
+    { posts: Array<ServerPost> }, //Return type from createAsyncThunk
     undefined,                    //What arguments take createAsyncThunk feature
     {
         dispatch: AppDispatchType,
@@ -23,18 +23,18 @@ export const fetchPostsTC = createAsyncThunk<
 })
 
 export const createPostTC = createAsyncThunk<
-    PostServe,
-    PostServe,
+    ServerPost,
+    string,
     {
         dispatch: AppDispatchType,
         state: AppRootStateType,
         rejectValue: ValidationErrors
     }
     >
-('Posts/createPost', async (newPostData, thunkAPI) => {
+('Posts/createPost', async (postBody, thunkAPI) => {
     //If use try catch statement mark need to setup catch return type
     try{
-        const res = await API.createPost(newPostData)
+        const res = await API.createPost(postBody)
         return res
     } catch (error){
         return thunkAPI.rejectWithValue({errorMessage: error.message})
@@ -87,13 +87,14 @@ export const slice = createSlice({
                 })
             })
             .addCase(asyncActions.createPostTC.fulfilled, (state, action) => {
+                const {postTitle, body, userName, createdAt, _id}  =  action.payload
                 const newPost: Post = {
-                    _id: action.payload._id,
-                    body: action.payload.body,
-                    userName: action.payload.userName,
-                    user: action.payload.user,
-                    createdAt: action.payload.createdAt,
-                    __v: action.payload.__v,
+                    _id: _id,
+                    body: body,
+                    postTitle: postTitle,
+                    userName: userName,
+                    createdAt: createdAt,
+                    __v: 0,
                     reqStatus: "idle"
                 }
                 state.posts.unshift(newPost)
@@ -123,7 +124,7 @@ export interface ValidationErrors {
     field_errors?: Record<string, string>
 }
 
-export interface Post extends PostServe {
+export interface Post extends ServerPost {
     reqStatus: RequestStatus
 }
 
