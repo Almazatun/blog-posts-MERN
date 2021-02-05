@@ -1,12 +1,12 @@
 import React from 'react'
-import {RequestStatus} from "../../../reducer";
 import style from './Card.module.scss'
+import {getDate} from "../../../utils/getDate";
 
 interface CardProps {
     body: string,
     userName: string,
-    requestStatus: RequestStatus
-    openModal: () => void
+    postTitle?: string
+    createAt: string
 }
 
 const initialState = {show: true}
@@ -17,35 +17,31 @@ export class Card extends React.Component<CardProps, CardState> {
 
     constructor(props: CardProps) {
         super(props);
-        this.handleClick = this.handleClick.bind(this)
-    }
-    handleClick(){
-        this.props.openModal()
     }
 
     render() {
-        const urlLogo = 'https://iconarchive.com/download/i75525/cornmanthe3rd/squareplex/Utilities-notepad.ico'
-        const cardContent = this.state.show ? (
-            <div className={style.card_content_front}>
-                <img src={`${urlLogo}`} alt="/"/>
-            </div>
-        ) : (
-            <div className={style.card_content_back}>
-                <span>{this.props.body}</span>
-            </div>
-        ) ;
-        const titleCardBottomBtn = this.state.show ? `Look at ${this.props.userName} Quote` : 'Back'
+        //Date
+        const date = getDate(this.props.createAt)
+
+        const readPost = this.state.show ? "" : (
+            <button className={style.btn_read} onClick={() => {}}>Read Post 💡</button>
+        );
 
         return (
             <div className={style.card_box}>
                 <div className={style.card_top}>
-                    <span onClick={this.props.openModal}>
-                        <img src="https://image.flaticon.com/icons/png/128/64/64576.png" alt="/"/>
-                    </span>
+                    <div className={style.card_top_post_title}>
+                         <span>adasdasdadasasdasd</span>
+                    </div>
+                    <div>
+                        <span>{date}</span>
+                    </div>
                 </div>
-                {cardContent}
                 <div className={style.card_bottom_btns}>
-                    <button className={style.btn} onClick={this.toggleComponent}>{`${titleCardBottomBtn}`}</button>
+                    <button className={style.btn} onClick={this.toggleComponent}>
+                        { this.state.show ? "More ✔" : "Cancel"}
+                    </button>
+                    {readPost}
                 </div>
             </div>
         )

@@ -1,61 +1,50 @@
+@import "src/components/LogIn/LogIn.module";
+
 $borderRadius: 10px;
 
 .card_box {
-  height: 200px;
-  width: 500px;
+  text-align: left;
+  height: 100px;
+  width: 700px;
   border-radius: $borderRadius;
-  //background: lightpink;
   padding: 1rem;
   margin: 10px 0;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  background: white;
+
   .card_top {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    span {
-      padding: 2px;
-      border-radius: 6px;
-      cursor: pointer;
-      background: white;
-      img {
-        height: 35px;
-        width: 35px;
+    justify-content: space-between;
+    text-align: left;
+
+    .card_top_post_title {
+      width: 75%;
+      span {
+        width: 60%;
+        word-break: break-all;
+        font-size: 36px;
+        font-weight: bold;
       }
     }
   }
-
-  .card_content_front {
-    height: 130px;
-    img {
-      height: 100px;
-      width: 100px;
-    }
-  }
-  .card_content_back {
-    height: 130px;
-  }
   .card_bottom_btns {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    //
-    background: gray;
-    border-radius: $borderRadius;
-    height: 45px;
     .btn {
-      height: 100%;
-      border-radius: $borderRadius;
-      outline: none;
-      border: 0 solid;
-      background: #017afe;
-      font-family: sans-serif;
-      font-size: 14px;
-      font-weight: bold;
-      color: #fff;
+      @include Button();
+      background: #67a1ec;
+      width: 150px;
+      cursor: pointer;
+    }
+
+    .btn_read {
+      @include Button();
+      background: #ec67cd;
+      width: 150px;
+      cursor: pointer;
+      margin: 0 0 0 10px;
     }
   }
 }
+
 .card_box {
   display: flex;
   flex-direction: column;
