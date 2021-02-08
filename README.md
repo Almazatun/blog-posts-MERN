@@ -1,21 +1,34 @@
-# 💫 Quotes Server
-## Routes
-HTTP Methods
-* Get  ```/quotes/```
-* Post ✔```/quotes/new``` and body ```{
-  "content": "some text",
-  "author": "Author name"
-  }```
-* Get ```/quotes/get/:id```
-* Delete ❌ ```/quotes/delete/:id```
-* Get ```/quotes/random```
-* Patch ✏```/quotes/update/:id``` and body ```{"content": "new title"}```
+# Blog posts server | 🏗 MERN
 
-## Project setup
+A blog posts server made with Typescript, Express, Node JS.
+
+## Installation
+
+1. Clone project
+
+```
+https://github.com/Almazatun/blog-posts-MERN.git
+```
+
+2. Download dependencies
+
 ```
 yarn install
 ```
-### Compiles
-```
-yarn start
-```
+
+## Usage
+
+You can start the server with yarn dev run then navigate to http://localhost:3010.
+
+## 💡 Features
+* Register
+* Login
+* Logout - client feature
+* JSON Web Token
+* Generate Token
+* Authentication middleware
+* Create post
+* Delete post
+* Update post
+* Get particular post by id
+* Get all posts
