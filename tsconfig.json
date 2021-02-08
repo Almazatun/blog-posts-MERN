@@ -74,6 +74,6 @@
     "client"                                  /* By default exclude property no exist read more in official doc...*/
   ],
   "files": [
-    "@types/express/types.d.ts"
+    "@types/express/index.d.ts"
   ]
 }
