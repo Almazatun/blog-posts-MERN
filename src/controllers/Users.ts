@@ -14,24 +14,19 @@ class UsersCTR  {
 
             if (user) {
                 res.status(400).json({
-                    errors: {
-                        userName: 'This is userName already exist 🔒',
-                        message: 'Try to use other userName'
-                    }
+                    errors: ['This is userName already exist 🔒'],
+                    message: 'Try to use other userName'
                 })
             } else if (userEmail) {
                 res.status(400).json({
-                    errors: {
-                        userEmail: 'This is email already exist 🔒',
-                        message: 'Try to use other email'
-                    }
+                    errors: ['This is email already exist 🔒'],
+                    message: 'Try to use other email'
                 })
             } else {
-                //Create a new user
-
                 //Hashing password
                 const bcryptPassword = await bcrypt.hash(password, 12)
 
+                //Create new user
                 const newUser = new Users({
                     userName: userName,
                     email: email,
@@ -47,8 +42,8 @@ class UsersCTR  {
             }
         } catch (error) {
             res.status(500).json({
-                message: "Some error ❌",
                 errors: {...error},
+                message: "Some error ❌"
             })
         }
     }
@@ -67,9 +62,8 @@ class UsersCTR  {
         try {
             if (!user) {
                 res.status(404).json({
-                    errors: {
-                        message: 'User not found 👥',
-                    }
+                    errors: ['User not found 👥'],
+                    message: 'Please check your user name or password and try again',
                 })
             } else {
                 //Make sure the user typed correct password
@@ -78,10 +72,7 @@ class UsersCTR  {
                 //Unless the user password incorrect the user get error message
                 if (!match) {
                     res.status(401).json({
-                        errors: {
-                            error: 'Wrong credentials 🆘',
-                            message: 'Please check your user name or password and try again',
-                        }
+                        errors: ["Wrong credentials 🆘"],
                     })
                 } else {
                     const token = generateToken(user)
@@ -93,8 +84,8 @@ class UsersCTR  {
             }
         } catch (error) {
             res.status(500).json({
-                message: "Some error ❌",
                 errors: {...error},
+                message: "Some error ❌"
             })
         }
     }
@@ -108,13 +99,13 @@ class UsersCTR  {
                 })
             } else {
                 res.json({
-                    message: "Sorry, User does not exist 👽"
+                    errors: ["Sorry, User does not exist 👽"]
                 })
             }
         } catch (error) {
             res.status(500).json({
-                message: "Some error ❌",
                 errors: {...error},
+                message: "Some error ❌"
             })
         }
     }

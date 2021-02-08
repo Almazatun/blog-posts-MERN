@@ -1,7 +1,7 @@
 import express from "express";
 import registerInput from "../helpers/user/registerInput";
 import signInInput from "../helpers/user/signInInput";
-import UsersController from "../controller/Users";
+import UsersController from "../controllers/Users";
 
 const router = express.Router()
 

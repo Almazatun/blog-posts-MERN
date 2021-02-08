@@ -2,13 +2,15 @@ import {Request} from "express";
 import jwt from 'jsonwebtoken'
 import SECRET_KEY from "../config";
 
+//Types
 interface IAuthErrors {
     AuthenticationError?: string
     AuthorizationToken?: string
     AuthorizationHeader?:string
 }
 
-export interface IsUser extends Object { //The reason extended from object because jwt.verify(token, SECRET_KEY) function might be return object
+//The reason extended from object because jwt.verify(token, SECRET_KEY) function might be return object
+export interface IsUser extends Object {
     id?: string
     userName?: string,
     email?: string,

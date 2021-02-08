@@ -9,7 +9,7 @@ const registerInput = (req: Request, res: Response, next: NextFunction) => {
 
     if (!errors || !valid) {
         res.status(422).json({
-            errors: errors,
+            errors: [errors],
             message: '👉 Please check it out your email or password'
         })
     } else {

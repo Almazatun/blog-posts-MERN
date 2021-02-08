@@ -8,7 +8,7 @@ const signInInput = (req: Request, res: Response, next: NextFunction) => {
 
     if (!errors || !valid) {
         res.status(422).json({
-            errors: errors,
+            errors: [errors],
             message: '👉 Please check it out your userName or password'
         })
     } else {

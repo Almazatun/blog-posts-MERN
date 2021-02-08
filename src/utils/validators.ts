@@ -42,7 +42,7 @@ export const validationRules = (
     if (!confirmPassword) {
         errors.confirmPassword = 'Confirm password can not be empty 🤬'
     } else if (password !== confirmPassword) {
-        errors.confirmPassword = 'Password do not math 💥'
+        errors.confirmPassword = 'Password do not match 💥'
     }
 
 

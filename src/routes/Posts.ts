@@ -1,7 +1,7 @@
 import express from 'express'
 import Post from '../models/Posts'
 import verifyUserToken from "../helpers/verifyUserToken";
-import PostsController from "../controller/Posts";
+import PostsController from "../controllers/Posts";
 
 
 const router = express.Router()
