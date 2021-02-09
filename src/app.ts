@@ -28,10 +28,13 @@ db.once('open', () => {
     console.log(err);
 })
 
+
+
 //Middleware
 app.use(bodyParser.json())
 app.use(cors({
     credentials: true,
+    origin: process.env.HOST || ' http://localhost:3000'
 }))
 
 //Routes
