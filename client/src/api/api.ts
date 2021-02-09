@@ -1,4 +1,6 @@
 import {instance} from "../confirm/apiData";
+import {ErrorType} from "../features/Application/reducer";
+import {ValidationErrors} from "../components/Posts/reducer";
 
 
 //API
@@ -8,21 +10,23 @@ export const API = {
             return res.data
         })
     },
-    createPost(postBody: string) {
-        return instance.post<ServerPost>('posts/new/', postBody).then(res => res.data)
+    createPost(newPost: NewPostBody) {
+        return instance.post<ServerPost>('posts/new/', newPost).then(res => res.data)
     },
     deletePost(postId: string) {
         return instance.delete<ServerPost>(`posts/delete/${postId}`).then(res => res.data)
     },
-    updatePost(postId: string, title: string,) {
-        const data: { content: string } = {content: title}
-        return instance.patch<ServerPost>(`posts/update/${postId}`, data)
+    updatePost(postId: string, postBody: {
+        postTitle?: string
+        body?: string
+    }) {
+        return instance.patch<ServerPost>(`posts/update/${postId}`, postBody).then(res => res.data)
     }
 }
 
 //Auth API
 export const API_AUTH = {
-    logIn(data: LogInArguments){
+    logIn(data: LogInArguments) {
         return instance.post<IUserServe>(`users/signIn/`, data).then(res => {
             return res.data
         })
@@ -52,4 +56,17 @@ export interface IUserServe {
     createdAt: string
     __v: number,
     token: string
+}
+
+export interface NewPostBody {
+    postTitle: string
+    body: string
+}
+
+type FieldsErrors = Pick<ValidationErrors, "field_errors">
+
+export interface ResponseError {
+    errors: ErrorType,
+    message: string,
+    fieldsErrors: FieldsErrors
 }
