@@ -25,10 +25,10 @@ export class Content extends Component <ContentProps, {}> {
             <Fragment>
                 <div className={style.content}>
                     <Switch>
-                        <Route exact path={PAGES.POSTS} component={() => <WrappedPostsContainer/>}/>
-                        <Route exact path={PAGES.LOG_IN} component={() => <LogInContainer/>}/>
-                        <Route exact path={PAGES.WRITE_NEW_POST} component={() => <WrappedWritePostContainer/>}/>
-                        <Route exact path={`${PAGES.POST}/:postId?`} component={() => <WrappedPostBlogContainer/>}/>
+                        <Route exact path={PAGES.POSTS} component={WrappedPostsContainer}/>
+                        <Route exact path={PAGES.LOG_IN} component={LogInContainer}/>
+                        <Route exact path={PAGES.WRITE_NEW_POST} component={WrappedWritePostContainer}/>
+                        <Route exact path={`${PAGES.POST}/:postId?`} component={WrappedPostBlogContainer}/>
                     </Switch>
                 </div>
                 <ErrorSnackbar errors={this.props.errors} />
