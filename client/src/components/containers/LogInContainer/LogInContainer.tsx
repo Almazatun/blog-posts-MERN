@@ -35,7 +35,7 @@ class LogInContainer extends Component<TProps, LogInContainerState> {
 
     onChangeLoginContainerState(event: ChangeEvent<HTMLInputElement>) {
         event.persist();
-        let value = event.currentTarget.value;
+        let value = event.currentTarget.value.trim() !== '' ? event.currentTarget.value : '';
         if (event.currentTarget.dataset.field) {
             const trigger: string = event.currentTarget.dataset.field;
             if (trigger === "userName") {
