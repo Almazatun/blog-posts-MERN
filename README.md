@@ -18,10 +18,10 @@ yarn install
 
 ## Usage
 
-You can start the server with yarn dev run then navigate to http://localhost:3010.
+You can start the server with yarn run dev then navigate to http://localhost:3010.
 
 ## 💡 Features
-* Register
+* App Register
 * Login
 * Logout - client feature
 * JSON Web Token
@@ -32,3 +32,17 @@ You can start the server with yarn dev run then navigate to http://localhost:301
 * Update post
 * Get particular post by id
 * Get all posts
+
+## Packages
+This project is made up of 2 packages that share code using Yarn Workspaces.
+* web 👁 (React + Typescript)
+* server 🧬 (MongoDB + Express + NodeJS + Typescript)
+
+## ▶️  Web | Front Demo
+![front](/src/public/prevVue.gif/)
+
+### Fake account data 👔
+```
+userName: person
+password: 2223331
+```
