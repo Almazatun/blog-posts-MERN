@@ -35,14 +35,13 @@ You can start the server with yarn run dev then navigate to http://localhost:301
 
 ## Packages
 This project is made up of 2 packages that share code using Yarn Workspaces.
-* web 👁 (React + Typescript)
-* server 🧬 (MongoDB + Express + NodeJS + Typescript)
+* web 👁 🏗 (React + Typescript + Redux-Toolkit)
+* server 🧬 🏗 (MongoDB database + Express + NodeJS + Typescript)
 
-## ▶️  Web | Front Demo
+## ▶️  Web Demo
 ![front](/src/public/prevVue.gif/)
 
-### Fake account data 👔
-```
-userName: person
-password: 2223331
-```
+### Usage Web | Front 👨‍🚀
+Fake account on the App 
+ * userName: person
+ * password: 2223331
